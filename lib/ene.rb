@@ -1,5 +1,5 @@
-require "ene/version"
-
 module Ene
-  # Your code goes here...
+  VERSION = "0.1.0".freeze
+
+  require "ene/version"
 end
