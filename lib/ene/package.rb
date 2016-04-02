@@ -81,6 +81,8 @@ module Ene
     end
 
     def export_to(dir)
+      FileUtils.mkdir_p File.expand_path(dir)
+
       source_adapter = Source.find(source)
       source_adapter.fetch(source: source, version: version, registry: registry) do |package_dir, manifest|
         files = [manifest.main, manifest.files].flatten.compact

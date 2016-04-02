@@ -3,4 +3,4 @@ require "bundler/setup"
 require "ene"
 
 package = Ene::Package.new(source: "jquery")
-package.export_to __dir__
+package.export_to "#{__dir__}/server/gems"

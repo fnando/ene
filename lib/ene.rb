@@ -7,6 +7,7 @@ module Ene
   require "tmpdir"
   require "fileutils"
   require "rubygems/package"
+  require "rubygems/indexer"
 
   require "ene/version"
   require "ene/package"
@@ -18,4 +19,5 @@ module Ene
   require "ene/version_range/range"
   require "ene/version_range/tilde_range"
   require "ene/version_range/x_range"
+  require "ene/gem_index"
 end

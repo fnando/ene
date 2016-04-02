@@ -9,3 +9,4 @@
 /tmp/
 *.gem
 /node_modules
+/examples/server
