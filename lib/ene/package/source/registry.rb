@@ -61,7 +61,8 @@ module Ene
           return available_versions.last unless version
 
           available_versions = available_versions.select do |v|
-            Gem::Requirement.create(VersionRange.parse(version)).satisfied_by?(Gem::Version.create(v))
+            Gem::Requirement.create(VersionRange.parse(version))
+                            .satisfied_by?(Gem::Version.create(v))
           end
 
           available_versions.last
