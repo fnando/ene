@@ -108,4 +108,12 @@ class VersionRangeTest < Minitest::Test
     assert_equal ["1.2.3"], Ene::VersionRange.parse("=1.2.3")
     assert_equal ["1.2.3"], Ene::VersionRange.parse("1.2.3")
   end
+
+  test "other" do
+    assert_equal ["<1.0.0"], Ene::VersionRange.parse("<1")
+  end
+
+  test "composed versions" do
+    assert_equal [">=0.10.3", "<1.0.0"], Ene::VersionRange.parse(">=0.10.3 <1.0.0")
+  end
 end
