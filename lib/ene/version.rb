@@ -56,19 +56,5 @@ module Ene
                     .gsub(/[^.\d]/m, "")
                     .split(".")
     end
-
-    def set(component, value)
-      iname = :"@#{component}"
-      instance_variable_set iname, value
-    end
-
-    def increment(component)
-      iname = :"@#{component}"
-      set component, instance_variable_get(iname) + 1
-    end
-
-    def reset(component)
-      set component, 0
-    end
   end
 end

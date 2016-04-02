@@ -17,29 +17,6 @@ class VersionTest < Minitest::Test
     assert_equal 3, version.patch
   end
 
-  test "increments component" do
-    version = Ene::Version.parse("0.0.0")
-
-    assert_equal 0, version.major
-    assert_equal 0, version.minor
-    assert_equal 0, version.patch
-
-    version.increment(:major)
-    assert_equal 1, version.major
-    assert_equal 0, version.minor
-    assert_equal 0, version.patch
-
-    version.increment(:minor)
-    assert_equal 1, version.major
-    assert_equal 1, version.minor
-    assert_equal 0, version.patch
-
-    version.increment(:patch)
-    assert_equal 1, version.major
-    assert_equal 1, version.minor
-    assert_equal 1, version.patch
-  end
-
   test "missing minor/patch" do
     assert_equal "0.0.0", Ene::Version.parse("0").to_s
     assert_equal "1.0.0", Ene::Version.parse("1").to_s
