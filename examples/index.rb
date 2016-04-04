@@ -1,5 +1,2 @@
-$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
-require "bundler/setup"
-require "ene"
-
+require_relative "boot"
 Ene::GemIndex.update("#{__dir__}/server")

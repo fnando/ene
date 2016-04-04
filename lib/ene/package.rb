@@ -18,13 +18,14 @@ module Ene
       return if file.directory?
 
       relative_path = file.relative_path_from(Pathname.new(package_dir))
+
+      # If there's just one file in the package, just move it to lib/assets
+      # root directory, so that you can just import the file without passing
+      # the directory (e.g. `//= require sinon` vs `//= require lib/sinon`).
+      relative_path = Pathname.new(relative_path.basename) if files.size == 1
+
       target_path = File.join(assets_dir, relative_path)
       target_dir = File.join(assets_dir, relative_path.dirname)
-
-      if files.size == 1 && File.basename(target_dir) == "dist"
-        target_path = target_path.gsub(%[dist/], "")
-        target_dir = target_dir.gsub(%[dist/], "")
-      end
 
       FileUtils.mkdir_p(gem_dir)
       FileUtils.mkdir_p(assets_dir)
