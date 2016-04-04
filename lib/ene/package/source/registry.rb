@@ -49,7 +49,7 @@ module Ene
         end
 
         def fetch_tarball_url
-          info = Aitch.get(File.join(registry, URI.escape(source))).data
+          info = Aitch.get(File.join(registry, URI.escape(source, "/"))).data
           versions = info["versions"].keys
           versions = versions.reject {|v| v =~ /[a-z]/ }.sort
           v = find_version(version, versions)

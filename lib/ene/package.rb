@@ -101,7 +101,7 @@ module Ene
           end
         end
 
-        rubygem_name = [prefix, manifest.name].join
+        rubygem_name = gem_name(manifest)
         build_dependencies(dir, manifest)
         gem_class_name = class_name(manifest.name)
         create_railtie gem_dir, rubygem_name, gem_class_name, manifest.version
@@ -116,6 +116,13 @@ module Ene
           .new(source: name, version: version, registry: registry, prefix: prefix)
           .export_to(dir)
       end
+    end
+
+    def gem_name(manifest)
+      [prefix, manifest.name]
+        .join
+        .gsub(/@/, "")
+        .gsub(/\//, "-")
     end
 
     def class_name(name)
